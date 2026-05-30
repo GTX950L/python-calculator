@@ -1,76 +1,69 @@
 """
-🧮 CLI Calculator
-A simple command-line calculator supporting +, -, *, /
-
-Run: python calculator.py
+命令行计算器
+支持加、减、乘、除四种运算，可以连续计算。
 """
 
-def add(a, b):
-    return a + b
+def 计算(表达式):
+    """解析并计算简单的四则运算表达式，格式：数字 运算符 数字"""
+    try:
+        # 按空格切分：例如 "5 + 3" -> ["5", "+", "3"]
+        部分 = 表达式.split()
+        if len(部分) != 3:
+            return "格式错误！请输入：数字 运算符 数字（例如：5 + 3）"
+
+        数1, 运算符, 数2 = 部分[0], 部分[1], 部分[2]
+
+        # 类型转换
+        数1 = float(数1)
+        数2 = float(数2)
+
+        # 根据运算符执行计算
+        if 运算符 == "+":
+            结果 = 数1 + 数2
+        elif 运算符 == "-":
+            结果 = 数1 - 数2
+        elif 运算符 == "*":
+            结果 = 数1 * 数2
+        elif 运算符 == "/":
+            if 数2 == 0:
+                return "错误：除数不能为零！"
+            结果 = 数1 / 数2
+        else:
+            return f"不支持的运算符：{运算符}（支持 + - * /）"
+
+        # 如果结果是整数就不显示小数点
+        if 结果 == int(结果):
+            结果 = int(结果)
+
+        return f"{数1} {运算符} {数2} = {结果}"
+
+    except ValueError:
+        return "错误：请输入有效的数字！"
+    except Exception as e:
+        return f"计算出错：{e}"
 
 
-def subtract(a, b):
-    return a - b
-
-
-def multiply(a, b):
-    return a * b
-
-
-def divide(a, b):
-    if b == 0:
-        return "Error: Cannot divide by zero!"
-    return a / b
-
-
-def main():
+def 主程序():
+    """主循环：不断接收用户输入直到输入 quit"""
     print("=" * 40)
-    print("    🧮  Simple Calculator")
+    print("    命令行计算器")
+    print("    支持：+  -  *  /")
+    print("    输入 quit 退出")
     print("=" * 40)
-    print("Operations: +  -  *  /  (type 'quit' to exit)")
-    print("-" * 40)
 
     while True:
-        # Get user input
-        expression = input("\nEnter calculation (e.g. 5 + 3): ").strip()
-
-        if expression.lower() == 'quit':
-            print("Goodbye! 👋")
+        输入 = input("\n请输入算式（如 5 + 3）：").strip()
+        
+        if 输入.lower() == "quit":
+            print("再见！👋")
             break
 
-        if not expression:
+        if 输入 == "":
             continue
 
-        # Parse: split into number, operator, number
-        parts = expression.split()
-        if len(parts) != 3:
-            print("Invalid format. Use: number operator number (e.g. 5 + 3)")
-            continue
-
-        try:
-            num1 = float(parts[0])
-            op = parts[1]
-            num2 = float(parts[2])
-        except ValueError:
-            print("Error: Please enter valid numbers.")
-            continue
-
-        # Calculate
-        if op == '+':
-            result = add(num1, num2)
-        elif op == '-':
-            result = subtract(num1, num2)
-        elif op == '*':
-            result = multiply(num1, num2)
-        elif op == '/':
-            result = divide(num1, num2)
-        else:
-            print(f"Unknown operator: '{op}'. Use +, -, *, or /")
-            continue
-
-        # Show result
-        print(f"Result: {result}")
+        结果 = 计算(输入)
+        print(f"  {结果}")
 
 
 if __name__ == "__main__":
-    main()
+    主程序()

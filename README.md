@@ -1,43 +1,48 @@
-# 🧮 CLI Calculator
+# 🧮 命令行计算器
 
-A simple command-line calculator built with Python.  
-Supports addition, subtraction, multiplication, and division.
+一个用 Python 写的简易计算器，支持加、减、乘、除四种运算，交互式命令行操作。
 
-## 🚀 How to Run
+## 🚀 运行方式
 
 ```bash
 python calculator.py
 ```
 
-## 📖 Usage
+## 📖 使用说明
 
 ```
-Enter calculation (e.g. 5 + 3): 12 * 4
-Result: 48.0
+>>> 5 + 3
+5.0 + 3.0 = 8
 
-Enter calculation (e.g. 5 + 3): 100 / 7
-Result: 14.285714285714286
+>>> 10 - 4
+10.0 - 4.0 = 6
 
-Enter calculation (e.g. 5 + 3): quit
-Goodbye! 👋
+>>> 6 * 7
+6.0 * 7.0 = 42
+
+>>> 15 / 3
+15.0 / 3.0 = 5.0
+
+>>> quit
+再见！👋
 ```
 
-## 🛠️ Features
+## 🛠️ 用到的知识点
 
-- ✅ Addition (`+`)
-- ✅ Subtraction (`-`)
-- ✅ Multiplication (`*`)
-- ✅ Division (`/`)
-- ✅ Divide-by-zero protection
-- ✅ Invalid input handling
-- ✅ Type `quit` to exit
+- 函数定义与调用
+- 字符串拆分
+- 条件判断（if / elif / else）
+- 异常处理（try / except）
+- 类型转换
+- while 循环
 
-## 📚 What I Learned
+## 📝 后续可以增强的功能
 
-- User input with `input()`
-- String parsing and splitting
-- Type conversion (`float()`)
-- Conditional branching (`if/elif/else`)
-- Function definitions
-- Error handling with `try/except`
-- While loop for interactive programs
+- [ ] 支持更多运算符（幂运算、取余等）
+- [ ] 支持连续运算（如 1+2+3）
+- [ ] 支持括号优先级
+- [ ] 图形界面版本
+
+---
+
+*学习编程最好的方式就是动手做。*
